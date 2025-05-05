@@ -95,11 +95,11 @@ public class TelaCalculoIp {
 	                    calculadora.setOctetos(primeiroOcteto, segundoOcteto, terceiroOcteto, quartoOcteto);
 	                    calculadora.setCidr(cidr);
 
-	                    lblResulIp.setText(calculadora.getIp());
-	                    lblResulClasse.setText(calculadora.getClasseIp());
-	                    lblResulMascDec.setText(calculadora.getMascaraDecimal());
-	                    lblResulMascBin.setText(calculadora.getMascaraBinaria());
-	                    lblResulEndIpDisp.setText(String.valueOf(calculadora.getNumIpsDisponiveis()));
+	                    lblResulIp.setText(calculadora.formatoIp());
+	                    lblResulClasse.setText(calculadora.classeIp());
+	                    lblResulMascDec.setText(calculadora.calcMascaraDecimal());
+	                    lblResulMascBin.setText(calculadora.calcMascaraBinaria());
+	                    lblResulEndIpDisp.setText(String.valueOf(calculadora.calcNumIpsDisponiveis()));
 
 	                    lblMensagemErro.setText("");
 	                    
