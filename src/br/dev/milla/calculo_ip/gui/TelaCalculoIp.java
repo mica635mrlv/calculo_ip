@@ -1,129 +1,219 @@
 package br.dev.milla.calculo_ip.gui;
 
+import br.dev.milla.calculo_ip.model.CalculadoraIp;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.plaf.FontUIResource;
 
 public class TelaCalculoIp {
+	
+	private JLabel lblEndIp, lblCidr;
+	private JPanel pnlOcteto;
+	private JTextField txtPrimeiroOcteto, txtSegundoOcteto, txtTerceiroOcteto, txtQuartoOcteto, txtCidr;
 
-	private JLabel labelEndIp;
-	private JTextField txtPrimeiroOctetoIp;
-	private JTextField txtSegundoOctetoIp;
-	private JTextField txtTerceiroOctetoIp;
-	private JTextField txtQuartoOctetoIp;
-	private JTextField txtCidrIp;	
+	private JButton btnCalcular, btnLimpar;
+	private JPanel pnlInfo;	
+	private JLabel lblIp, lblClasse, lblMascaraDec, lblMascaraBin, lblEndIpDisp;
 	
-	private JLabel labelIp;
-	private JLabel labelClasse;
-	private JLabel labelMascaraDecimal;
-	private JLabel labelMascaraBinario;
-	private JLabel labelIpDisponivel;
-	private JButton buttonCalcular;
+	private JPanel pnlResultado;
+	private JLabel lblResulIp, lblResulClasse, lblResulMascDec, lblResulMascBin, lblResulEndIpDisp;
+	private JLabel lblMensagemErro;
 	
-	private JButton buttonLimpar;
-//	private JLabel labelResultado;
-//	private JLabel labelMensagemErro;
-	
-		private void criarTelaCalculoIp() {
-	        
-	        JFrame tela = new JFrame();
-			tela.setSize(500, 320);
+		public void criarTelaCalculoIp() {
+		
+			JFrame tela = new JFrame();
+			tela.setSize(500, 405);
 			tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			tela.setTitle("Calculadora de IP");
 			tela.setLayout(null);
 			tela.setResizable(false);
 			tela.setLocationRelativeTo(null);
+					
+			// Usuário colocará o IP
+			lblEndIp = new JLabel();
+			lblEndIp.setText("Endereço de IP");
+			lblEndIp.setBounds(37, 20, 220, 35);
+			lblEndIp.setFont(new Font("Arial", Font.BOLD, 15));
 
-//	        // Campos de entrada
-//	        frame.add(new JLabel("Primeiro Octeto:"));
-//	        primeiroOctetoField = new JTextField();
-//	        frame.add(primeiroOctetoField);
-//
-//	        frame.add(new JLabel("Segundo Octeto:"));
-//	        segundoOctetoField = new JTextField();
-//	        frame.add(segundoOctetoField);
-//
-//	        frame.add(new JLabel("Terceiro Octeto:"));
-//	        terceiroOctetoField = new JTextField();
-//	        frame.add(terceiroOctetoField);
-//
-//	        frame.add(new JLabel("Quarto Octeto:"));
-//	        quartoOctetoField = new JTextField();
-//	        frame.add(quartoOctetoField);
-//
-//	        frame.add(new JLabel("CIDR:"));
-//	        cidrField = new JTextField("8");
-//	        frame.add(cidrField);
-//
-//	        btnCalcular = new JButton("Calcular");
-//	        frame.add(btnCalcular);
-//
-//	        // Labels de resultados
-//	        pIP = new JLabel("IP: ");
-//	        frame.add(pIP);
-//
-//	        pClasse = new JLabel("Classe: ");
-//	        frame.add(pClasse);
-//
-//	        pMascaraDecimal = new JLabel("Máscara Decimal: ");
-//	        frame.add(pMascaraDecimal);
-//
-//	        pMascaraBinario = new JLabel("Máscara Binária: ");
-//	        frame.add(pMascaraBinario);
-//
-//	        pHosts = new JLabel("Número de Hosts: ");
-//	        frame.add(pHosts);
-//
-//	        pRedes = new JLabel("Número de Subredes: ");
-//	        frame.add(pRedes);
-//
-//	        btnCalcular.addActionListener(this::calcular);
-//
-//	        frame.setVisible(true);
-//	    }
-//
-//	    private void calcular(ActionEvent event) {
-//	        try {
-//	            int primeiroOcteto = Integer.parseInt(primeiroOctetoField.getText().trim());
-//	            int segundoOcteto = Integer.parseInt(segundoOctetoField.getText().trim());
-//	            int terceiroOcteto = Integer.parseInt(terceiroOctetoField.getText().trim());
-//	            int quartoOcteto = Integer.parseInt(quartoOctetoField.getText().trim());
-//	            int cidr = Integer.parseInt(cidrField.getText().trim());
-//
-//	            if (primeiroOcteto < 0 || primeiroOcteto > 255 ||
-//	                segundoOcteto < 0 || segundoOcteto > 255 ||
-//	                terceiroOcteto < 0 || terceiroOcteto > 255 ||
-//	                quartoOcteto < 0 || quartoOcteto > 255 ||
-//	                cidr < 8 || cidr > 32) {
-//	                showErrorMessage("Valores inválidos! Verifique os octetos e CIDR.");
-//	                return;
-//	            }
-//
-//	            IP ip = new IP(primeiroOcteto, segundoOcteto, terceiroOcteto, quartoOcteto);
-//	            String classe = CidrCalculator.identificarClasse(primeiroOcteto);
-//	            String mascaraDecimal = CidrCalculator.obterMascaraDecimal(classe);
-//	            String mascaraBinaria = CidrCalculator.obterMascaraBinaria(classe);
-//	            int hosts = CidrCalculator.calcularHosts(cidr);
-//	            int subRedes = CidrCalculator.calcularSubRedes(cidr, classe);
-//
-//	            pIP.setText("IP: " + ip.getIP());
-//	            pClasse.setText("Classe: " + classe);
-//	            pMascaraDecimal.setText("Máscara Decimal: " + mascaraDecimal);
-//	            pMascaraBinario.setText("Máscara Binária: " + mascaraBinaria);
-//	            pHosts.setText("Número de Hosts: " + hosts);
-//	            pRedes.setText("Número de Subredes: " + subRedes);
-//	        } catch (NumberFormatException e) {
-//	            showErrorMessage("Por favor, insira valores numéricos válidos.");
-//	        }
-//	    }
-//
-//	    private void showErrorMessage(String message) {
-//	        JOptionPane.showMessageDialog(frame, message, "Erro", JOptionPane.ERROR_MESSAGE);
+			// Panel dos Octetos do IP
+			pnlOcteto = new JPanel(new GridLayout(1, 4, 5, 0));
+			pnlOcteto.setBounds(37, 60, 280, 30);
 			
-			tela.setVisible(true);
+			txtPrimeiroOcteto = new JTextField();
+			txtSegundoOcteto = new JTextField();
+			txtTerceiroOcteto = new JTextField();
+			txtQuartoOcteto = new JTextField();
 			
-	    }
+			txtPrimeiroOcteto.setHorizontalAlignment(txtPrimeiroOcteto.CENTER);
+			txtSegundoOcteto.setHorizontalAlignment(txtSegundoOcteto.CENTER);
+			txtTerceiroOcteto.setHorizontalAlignment(txtTerceiroOcteto.CENTER);
+			txtQuartoOcteto.setHorizontalAlignment(txtQuartoOcteto.CENTER);
+						
+			pnlOcteto.add(txtPrimeiroOcteto); 
+			pnlOcteto.add(txtSegundoOcteto); 
+			pnlOcteto.add(txtTerceiroOcteto); 
+			pnlOcteto.add(txtQuartoOcteto);
+			
+			// CIDR
+			lblCidr = new JLabel();
+			lblCidr.setText("CIDR");
+			lblCidr.setBounds(380, 20, 100, 35);
+			lblCidr.setFont(new Font("Arial", Font.BOLD, 17));
+			
+			txtCidr = new JTextField();
+			txtCidr.setBounds(380, 60, 66, 30);
+			txtCidr.setHorizontalAlignment(txtCidr.CENTER);
+			
+			// Botão Calcular
+			btnCalcular = new JButton();
+			btnCalcular.setText("CALCULAR");
+			btnCalcular.setBounds(37, 105, 200, 35);
+			btnCalcular.setFont(new Font("Arial", Font.BOLD, 17));
+	        btnCalcular.addActionListener(new ActionListener() {
+	            
+	        	@Override
+	            public void actionPerformed(ActionEvent e) {
+	                
+	            	try {
+	                    int primeiroOcteto = Integer.parseInt(txtPrimeiroOcteto.getText());
+	                    int segundoOcteto = Integer.parseInt(txtSegundoOcteto.getText());
+	                    int terceiroOcteto = Integer.parseInt(txtTerceiroOcteto.getText());
+	                    int quartoOcteto = Integer.parseInt(txtQuartoOcteto.getText());
+	                    int cidr = Integer.parseInt(txtCidr.getText());
 
+	                    CalculadoraIp calculadora = new CalculadoraIp();
+	                    calculadora.setOctetos(primeiroOcteto, segundoOcteto, terceiroOcteto, quartoOcteto);
+	                    calculadora.setCidr(cidr);
 
+	                    lblResulIp.setText(calculadora.getIp());
+	                    lblResulClasse.setText(calculadora.getClasseIp());
+	                    lblResulMascDec.setText(calculadora.getMascaraDecimal());
+	                    lblResulMascBin.setText(calculadora.getMascaraBinaria());
+	                    lblResulEndIpDisp.setText(String.valueOf(calculadora.getNumIpsDisponiveis()));
+
+	                    lblMensagemErro.setText("");
+	                    
+	                } catch (NumberFormatException ex) {
+	                	
+	                    lblMensagemErro.setText("<html>Para que a calculadora funcione corretamente <br> digite apenas números válidos!<html>");
+	                    
+	                }
+	            }
+	        });
+			
+			// Botão Limpar
+			btnLimpar = new JButton();
+			btnLimpar.setText("LIMPAR");
+			btnLimpar.setBounds(246, 105, 200, 35);
+			btnLimpar.setFont(new Font("Arial", Font.BOLD, 15));
+			btnLimpar.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					txtPrimeiroOcteto.setText("");
+			        txtSegundoOcteto.setText("");
+			        txtTerceiroOcteto.setText("");
+			        txtQuartoOcteto.setText("");
+			        
+			        txtCidr.setText("");
+			        
+			        lblResulIp.setText("");
+			        lblResulClasse.setText("");
+			        lblResulMascDec.setText("");
+			        lblResulMascBin.setText("");
+			        lblResulEndIpDisp.setText("");
+					
+			        lblMensagemErro.setText("");
+			        
+				}
+			});
+			
+			// Painel de Informações
+			pnlInfo = new JPanel(new GridLayout(5, 1, 0, 0));
+			pnlInfo.setBounds(37, 160, 200, 115);
+			
+			lblIp = new JLabel();
+			lblClasse = new JLabel();
+			lblMascaraDec = new JLabel();
+			lblMascaraBin = new JLabel();
+			lblEndIpDisp = new JLabel();
+			
+			lblIp.setText("IP:");
+			lblClasse.setText("Classe:");
+			lblMascaraDec.setText("Másc. Decimal:");
+			lblMascaraBin.setText("Másc. Binária:");
+			lblEndIpDisp.setText("IPs Disponíveis:");
+			
+			lblIp.setFont(new Font("Arial", Font.BOLD, 15));
+			lblClasse.setFont(new Font("Arial", Font.BOLD, 15));
+			lblMascaraDec.setFont(new Font("Arial", Font.BOLD, 15));
+			lblMascaraBin.setFont(new Font("Arial", Font.BOLD, 15));
+			lblEndIpDisp.setFont(new Font("Arial", Font.BOLD, 15));
+			
+			pnlInfo.add(lblIp); 
+			pnlInfo.add(lblClasse); 
+			pnlInfo.add(lblMascaraDec); 
+			pnlInfo.add(lblMascaraBin);
+			pnlInfo.add(lblEndIpDisp);
+			
+			// Painel Resultado
+			pnlResultado = new JPanel(new GridLayout(5, 1, 0, 0));
+			pnlResultado.setBounds(160, 160, 287, 115);
+			
+			lblResulIp = new JLabel();
+			lblResulClasse = new JLabel();
+			lblResulMascDec = new JLabel();
+			lblResulMascBin = new JLabel();
+			lblResulEndIpDisp = new JLabel();
+			
+			lblResulIp.setFont(new Font("Arial", Font.BOLD, 15));
+			lblResulClasse.setFont(new Font("Arial", Font.BOLD, 15));
+			lblResulMascDec.setFont(new Font("Arial", Font.BOLD, 15));
+			lblResulMascBin.setFont(new Font("Arial", Font.BOLD, 15));
+			lblResulEndIpDisp.setFont(new Font("Arial", Font.BOLD, 15));
+			
+			lblResulIp.setHorizontalAlignment(SwingConstants.RIGHT);
+			lblResulClasse.setHorizontalAlignment(SwingConstants.RIGHT);
+			lblResulMascDec.setHorizontalAlignment(SwingConstants.RIGHT);
+			lblResulMascBin.setHorizontalAlignment(SwingConstants.RIGHT);
+			lblResulEndIpDisp.setHorizontalAlignment(SwingConstants.RIGHT);
+			
+			pnlResultado.add(lblResulIp); 
+			pnlResultado.add(lblResulClasse); 
+			pnlResultado.add(lblResulMascDec); 
+			pnlResultado.add(lblResulMascBin); 
+			pnlResultado.add(lblResulEndIpDisp); 
+			
+			lblMensagemErro = new JLabel();
+			lblMensagemErro.setBounds(67, 295, 400, 40);
+			lblMensagemErro.setForeground(Color.red);
+			lblMensagemErro.setFont(new Font("Arial", Font.BOLD, 15));
+			
+			// Aparecer na Tela
+			tela.getContentPane().add(lblEndIp);
+			tela.getContentPane().add(pnlOcteto);
+			tela.getContentPane().add(lblCidr);
+			tela.getContentPane().add(txtCidr);
+			tela.getContentPane().add(btnCalcular);
+			tela.getContentPane().add(btnLimpar);
+			tela.getContentPane().add(pnlInfo);
+			tela.getContentPane().add(pnlResultado);
+			tela.getContentPane().add(lblMensagemErro);
+			
+		// Tornar tela visível	
+		tela.setVisible(true);
+		
 	}
+
+}
