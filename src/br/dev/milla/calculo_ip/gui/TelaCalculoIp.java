@@ -100,6 +100,7 @@ public class TelaCalculoIp {
 	                    lblResulMascDec.setText(calculadora.calcMascaraDecimal());
 	                    lblResulMascBin.setText(calculadora.calcMascaraBinaria());
 	                    lblResulEndIpDisp.setText(String.valueOf(calculadora.calcNumIpsDisponiveis()));
+	                    lblResulNumRedes.setText(String.valueOf(calculadora.calcNumRedes()));	                    
 
 	                    lblMensagemErro.setText("");
 	                    
@@ -133,6 +134,7 @@ public class TelaCalculoIp {
 			        lblResulMascDec.setText("");
 			        lblResulMascBin.setText("");
 			        lblResulEndIpDisp.setText("");
+			        lblResulNumRedes.setText("");
 					
 			        lblMensagemErro.setText("");
 			        
@@ -155,7 +157,7 @@ public class TelaCalculoIp {
 			lblMascaraDec.setText("Másc. Decimal:");
 			lblMascaraBin.setText("Másc. Binária:");
 			lblEndIpDisp.setText("IPs Disponíveis:");
-			lblNumRedes.setText("Número de Redes:");
+			lblNumRedes.setText("Núm. de Redes:");
 			
 			lblIp.setFont(new Font("Arial", Font.BOLD, 15));
 			lblClasse.setFont(new Font("Arial", Font.BOLD, 15));

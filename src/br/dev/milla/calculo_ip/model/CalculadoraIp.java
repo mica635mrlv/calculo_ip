@@ -57,7 +57,31 @@ public class CalculadoraIp {
     	if (cidr >= 32) {
     	    return 1;
     	} else {
-    	    return (int) Math.pow(2, 32 - cidr);
+    	    return (int) Math.pow(2, 32 - cidr) - 2;
     	}	
+    }
+    
+    public int calcNumRedes() {
+        int bitsRede;
+        
+        switch (classeIp()) {
+            case "A":
+                bitsRede = cidr - 8;
+                break;
+            case "B":
+                bitsRede = cidr - 16;
+                break;
+            case "C":
+                bitsRede = cidr - 24;
+                break;
+            default:
+                return 0;
+        }
+
+        if (bitsRede < 0) {
+            return 0;
+        }
+
+        return (int) Math.pow(2, bitsRede);
     }
 }
