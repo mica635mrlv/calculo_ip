@@ -23,16 +23,16 @@ public class TelaCalculoIp {
 
 	private JButton btnCalcular, btnLimpar;
 	private JPanel pnlInfo;	
-	private JLabel lblIp, lblClasse, lblMascaraDec, lblMascaraBin, lblEndIpDisp;
+	private JLabel lblIp, lblClasse, lblMascaraDec, lblMascaraBin, lblEndIpDisp, lblNumRedes;
 	
 	private JPanel pnlResultado;
-	private JLabel lblResulIp, lblResulClasse, lblResulMascDec, lblResulMascBin, lblResulEndIpDisp;
+	private JLabel lblResulIp, lblResulClasse, lblResulMascDec, lblResulMascBin, lblResulEndIpDisp, lblResulNumRedes;
 	private JLabel lblMensagemErro;
 	
 		public void criarTelaCalculoIp() {
 		
 			JFrame tela = new JFrame();
-			tela.setSize(500, 405);
+			tela.setSize(500, 428);
 			tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			tela.setTitle("Calculadora de IP");
 			tela.setLayout(null);
@@ -140,63 +140,71 @@ public class TelaCalculoIp {
 			});
 			
 			// Painel de Informações
-			pnlInfo = new JPanel(new GridLayout(5, 1, 0, 0));
-			pnlInfo.setBounds(37, 160, 200, 115);
+			pnlInfo = new JPanel(new GridLayout(6, 1, 0, 0));
+			pnlInfo.setBounds(37, 160, 200, 138);
 			
 			lblIp = new JLabel();
 			lblClasse = new JLabel();
 			lblMascaraDec = new JLabel();
 			lblMascaraBin = new JLabel();
 			lblEndIpDisp = new JLabel();
+			lblNumRedes = new JLabel();
 			
 			lblIp.setText("IP:");
 			lblClasse.setText("Classe:");
 			lblMascaraDec.setText("Másc. Decimal:");
 			lblMascaraBin.setText("Másc. Binária:");
 			lblEndIpDisp.setText("IPs Disponíveis:");
+			lblNumRedes.setText("Número de Redes:");
 			
 			lblIp.setFont(new Font("Arial", Font.BOLD, 15));
 			lblClasse.setFont(new Font("Arial", Font.BOLD, 15));
 			lblMascaraDec.setFont(new Font("Arial", Font.BOLD, 15));
 			lblMascaraBin.setFont(new Font("Arial", Font.BOLD, 15));
 			lblEndIpDisp.setFont(new Font("Arial", Font.BOLD, 15));
+			lblNumRedes.setFont(new Font("Arial", Font.BOLD, 15));
 			
 			pnlInfo.add(lblIp); 
 			pnlInfo.add(lblClasse); 
 			pnlInfo.add(lblMascaraDec); 
 			pnlInfo.add(lblMascaraBin);
 			pnlInfo.add(lblEndIpDisp);
+			pnlInfo.add(lblNumRedes);
 			
 			// Painel Resultado
-			pnlResultado = new JPanel(new GridLayout(5, 1, 0, 0));
-			pnlResultado.setBounds(160, 160, 287, 115);
+			pnlResultado = new JPanel(new GridLayout(6, 1, 0, 0));
+			pnlResultado.setBounds(160, 160, 287, 138);
 			
 			lblResulIp = new JLabel();
 			lblResulClasse = new JLabel();
 			lblResulMascDec = new JLabel();
 			lblResulMascBin = new JLabel();
 			lblResulEndIpDisp = new JLabel();
+			lblResulNumRedes = new JLabel();
 			
 			lblResulIp.setFont(new Font("Arial", Font.BOLD, 15));
 			lblResulClasse.setFont(new Font("Arial", Font.BOLD, 15));
 			lblResulMascDec.setFont(new Font("Arial", Font.BOLD, 15));
 			lblResulMascBin.setFont(new Font("Arial", Font.BOLD, 15));
 			lblResulEndIpDisp.setFont(new Font("Arial", Font.BOLD, 15));
+			lblResulNumRedes.setFont(new Font("Arial", Font.BOLD, 15));
 			
 			lblResulIp.setHorizontalAlignment(SwingConstants.RIGHT);
 			lblResulClasse.setHorizontalAlignment(SwingConstants.RIGHT);
 			lblResulMascDec.setHorizontalAlignment(SwingConstants.RIGHT);
 			lblResulMascBin.setHorizontalAlignment(SwingConstants.RIGHT);
 			lblResulEndIpDisp.setHorizontalAlignment(SwingConstants.RIGHT);
+			lblResulNumRedes.setHorizontalAlignment(SwingConstants.RIGHT);			
 			
 			pnlResultado.add(lblResulIp); 
 			pnlResultado.add(lblResulClasse); 
 			pnlResultado.add(lblResulMascDec); 
 			pnlResultado.add(lblResulMascBin); 
 			pnlResultado.add(lblResulEndIpDisp); 
+			pnlResultado.add(lblResulNumRedes); 
 			
 			lblMensagemErro = new JLabel();
-			lblMensagemErro.setBounds(67, 295, 400, 40);
+			lblMensagemErro.setBounds(67, 318, 400, 40);
 			lblMensagemErro.setForeground(Color.red);
 			lblMensagemErro.setFont(new Font("Arial", Font.BOLD, 15));
 			
