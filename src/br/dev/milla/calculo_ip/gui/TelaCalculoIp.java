@@ -23,10 +23,10 @@ public class TelaCalculoIp {
 
 	private JButton btnCalcular, btnLimpar;
 	private JPanel pnlInfo;	
-	private JLabel lblIp, lblClasse, lblMascaraDec, lblMascaraBin, lblEndIpDisp, lblNumRedes;
+	private JLabel lblIp, lblClasse, lblMascaraDec, lblMascaraBin, lblEndIpDisp, lblNumRedes, lblSalto, lblPrimIpValido, lblUltimIpValido, lblIpBroadcast;
 	
 	private JPanel pnlResultado;
-	private JLabel lblResulIp, lblResulClasse, lblResulMascDec, lblResulMascBin, lblResulEndIpDisp, lblResulNumRedes;
+	private JLabel lblResulIp, lblResulClasse, lblResulMascDec, lblResulMascBin, lblResulEndIpDisp, lblResulNumRedes, lblResulSalto, lblResulPrimIpValido, lblResulUltimIpValido, lblResulIpBroadcast ;
 	private JLabel lblMensagemErro;
 	
 		public void criarTelaCalculoIp() {
@@ -100,7 +100,11 @@ public class TelaCalculoIp {
 	                    lblResulMascDec.setText(calculadora.calcMascaraDecimal());
 	                    lblResulMascBin.setText(calculadora.calcMascaraBinaria());
 	                    lblResulEndIpDisp.setText(String.valueOf(calculadora.calcNumIpsDisponiveis()));
-	                    lblResulNumRedes.setText(String.valueOf(calculadora.calcNumRedes()));	                    
+	                    lblResulNumRedes.setText(String.valueOf(calculadora.calcNumRedes()));
+	                    lblResulSalto.setText(String.valueOf(calculadora.calcSalto()));
+	                    lblResulPrimIpValido.setText(String.valueOf(calculadora.primIpValido()));
+	                    lblResulUltimIpValido.setText(String.valueOf(calculadora.ultimIpValido()));
+	                    lblResulIpBroadcast.setText(String.valueOf(calculadora.ipBroadcast()));	                    
 
 	                    lblMensagemErro.setText("");
 	                    
@@ -135,6 +139,10 @@ public class TelaCalculoIp {
 			        lblResulMascBin.setText("");
 			        lblResulEndIpDisp.setText("");
 			        lblResulNumRedes.setText("");
+			        lblResulSalto.setText("");
+			        lblResulPrimIpValido.setText("");
+			        lblResulUltimIpValido.setText("");
+			        lblResulIpBroadcast.setText("");
 					
 			        lblMensagemErro.setText("");
 			        
@@ -142,8 +150,8 @@ public class TelaCalculoIp {
 			});
 			
 			// Painel de Informações
-			pnlInfo = new JPanel(new GridLayout(6, 1, 0, 0));
-			pnlInfo.setBounds(37, 160, 200, 138);
+			pnlInfo = new JPanel(new GridLayout(9, 1, 0, 0));
+			pnlInfo.setBounds(37, 160, 200, 207);
 			
 			lblIp = new JLabel();
 			lblClasse = new JLabel();
@@ -151,6 +159,10 @@ public class TelaCalculoIp {
 			lblMascaraBin = new JLabel();
 			lblEndIpDisp = new JLabel();
 			lblNumRedes = new JLabel();
+			lblSalto = new JLabel();
+			lblPrimIpValido = new JLabel();
+			lblUltimIpValido = new JLabel();
+			lblIpBroadcast = new JLabel();
 			
 			lblIp.setText("IP:");
 			lblClasse.setText("Classe:");
@@ -158,6 +170,10 @@ public class TelaCalculoIp {
 			lblMascaraBin.setText("Másc. Binária:");
 			lblEndIpDisp.setText("IPs Disponíveis:");
 			lblNumRedes.setText("Núm. de Redes:");
+			lblSalto.setText("Salto:");
+			lblPrimIpValido.setText("Prim. IP Válido:");
+			lblUltimIpValido.setText("Ult. IP Válido:");
+			lblIpBroadcast.setText("IP Broadcast:");			
 			
 			lblIp.setFont(new Font("Arial", Font.BOLD, 15));
 			lblClasse.setFont(new Font("Arial", Font.BOLD, 15));
@@ -165,6 +181,10 @@ public class TelaCalculoIp {
 			lblMascaraBin.setFont(new Font("Arial", Font.BOLD, 15));
 			lblEndIpDisp.setFont(new Font("Arial", Font.BOLD, 15));
 			lblNumRedes.setFont(new Font("Arial", Font.BOLD, 15));
+			lblSalto.setFont(new Font("Arial", Font.BOLD, 15));
+			lblPrimIpValido.setFont(new Font("Arial", Font.BOLD, 15));
+			lblUltimIpValido.setFont(new Font("Arial", Font.BOLD, 15));
+			lblIpBroadcast.setFont(new Font("Arial", Font.BOLD, 15));
 			
 			pnlInfo.add(lblIp); 
 			pnlInfo.add(lblClasse); 
@@ -172,10 +192,13 @@ public class TelaCalculoIp {
 			pnlInfo.add(lblMascaraBin);
 			pnlInfo.add(lblEndIpDisp);
 			pnlInfo.add(lblNumRedes);
+			pnlInfo.add(lblPrimIpValido);
+			pnlInfo.add(lblUltimIpValido);
+			pnlInfo.add(lblIpBroadcast);
 			
 			// Painel Resultado
-			pnlResultado = new JPanel(new GridLayout(6, 1, 0, 0));
-			pnlResultado.setBounds(160, 160, 287, 138);
+			pnlResultado = new JPanel(new GridLayout(9, 1, 0, 0));
+			pnlResultado.setBounds(160, 160, 287, 207);
 			
 			lblResulIp = new JLabel();
 			lblResulClasse = new JLabel();
@@ -183,6 +206,10 @@ public class TelaCalculoIp {
 			lblResulMascBin = new JLabel();
 			lblResulEndIpDisp = new JLabel();
 			lblResulNumRedes = new JLabel();
+			lblResulSalto = new JLabel();
+			lblResulPrimIpValido = new JLabel();
+			lblResulUltimIpValido = new JLabel();
+			lblResulIpBroadcast = new JLabel();
 			
 			lblResulIp.setFont(new Font("Arial", Font.BOLD, 15));
 			lblResulClasse.setFont(new Font("Arial", Font.BOLD, 15));
@@ -190,6 +217,10 @@ public class TelaCalculoIp {
 			lblResulMascBin.setFont(new Font("Arial", Font.BOLD, 15));
 			lblResulEndIpDisp.setFont(new Font("Arial", Font.BOLD, 15));
 			lblResulNumRedes.setFont(new Font("Arial", Font.BOLD, 15));
+			lblResulSalto.setFont(new Font("Arial", Font.BOLD, 15));
+			lblResulPrimIpValido.setFont(new Font("Arial", Font.BOLD, 15));
+			lblResulUltimIpValido.setFont(new Font("Arial", Font.BOLD, 15));
+			lblResulIpBroadcast.setFont(new Font("Arial", Font.BOLD, 15));
 			
 			lblResulIp.setHorizontalAlignment(SwingConstants.RIGHT);
 			lblResulClasse.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -197,13 +228,20 @@ public class TelaCalculoIp {
 			lblResulMascBin.setHorizontalAlignment(SwingConstants.RIGHT);
 			lblResulEndIpDisp.setHorizontalAlignment(SwingConstants.RIGHT);
 			lblResulNumRedes.setHorizontalAlignment(SwingConstants.RIGHT);			
+			lblResulSalto.setHorizontalAlignment(SwingConstants.RIGHT);			
+			lblResulPrimIpValido.setHorizontalAlignment(SwingConstants.RIGHT);			
+			lblResulUltimIpValido.setHorizontalAlignment(SwingConstants.RIGHT);			
+			lblResulIpBroadcast.setHorizontalAlignment(SwingConstants.RIGHT);			
 			
 			pnlResultado.add(lblResulIp); 
 			pnlResultado.add(lblResulClasse); 
 			pnlResultado.add(lblResulMascDec); 
 			pnlResultado.add(lblResulMascBin); 
 			pnlResultado.add(lblResulEndIpDisp); 
-			pnlResultado.add(lblResulNumRedes); 
+			pnlResultado.add(lblResulNumRedes);  
+			pnlResultado.add(lblResulPrimIpValido); 
+			pnlResultado.add(lblResulUltimIpValido); 
+			pnlResultado.add(lblResulIpBroadcast); 
 			
 			lblMensagemErro = new JLabel();
 			lblMensagemErro.setBounds(67, 318, 400, 40);

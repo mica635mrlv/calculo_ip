@@ -8,7 +8,7 @@ public class CalculadoraIpApp {
 		
 		TelaCalculoIp tela = new TelaCalculoIp();
 		tela.criarTelaCalculoIp();
-
+		
 	}
 
 }
