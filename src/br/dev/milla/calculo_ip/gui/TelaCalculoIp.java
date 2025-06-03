@@ -32,7 +32,7 @@ public class TelaCalculoIp {
 		public void criarTelaCalculoIp() {
 		
 			JFrame tela = new JFrame();
-			tela.setSize(500, 428);
+			tela.setSize(500, 497);
 			tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			tela.setTitle("Calculadora de IP");
 			tela.setLayout(null);
@@ -90,6 +90,16 @@ public class TelaCalculoIp {
 	                    int terceiroOcteto = Integer.parseInt(txtTerceiroOcteto.getText());
 	                    int quartoOcteto = Integer.parseInt(txtQuartoOcteto.getText());
 	                    int cidr = Integer.parseInt(txtCidr.getText());
+	                    
+	                    if (primeiroOcteto < 0 || primeiroOcteto > 255 ||
+							segundoOcteto < 0 || segundoOcteto > 255 ||
+							terceiroOcteto < 0 || terceiroOcteto > 255 ||
+							quartoOcteto < 0 || quartoOcteto > 255 ||
+							cidr < 0 || cidr > 32) {
+							lblMensagemErro.setText(
+									"<html> Há um erro: revise o valor do IP ou do CIDR para<br>poder fazer o calculo.</html>");
+							return;
+						}
 
 	                    CalculadoraIp calculadora = new CalculadoraIp();
 	                    calculadora.setOctetos(primeiroOcteto, segundoOcteto, terceiroOcteto, quartoOcteto);
@@ -244,7 +254,7 @@ public class TelaCalculoIp {
 			pnlResultado.add(lblResulIpBroadcast); 
 			
 			lblMensagemErro = new JLabel();
-			lblMensagemErro.setBounds(67, 318, 400, 40);
+			lblMensagemErro.setBounds(67, 387, 400, 40);
 			lblMensagemErro.setForeground(Color.red);
 			lblMensagemErro.setFont(new Font("Arial", Font.BOLD, 15));
 			
