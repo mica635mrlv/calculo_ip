@@ -10,7 +10,7 @@ O projeto da calculadora de IP desenvolvido com a tecnologia Java. Possui uma In
     
   - Verifica entradas de IP e máscara (por exemplo, xxx.xxx.xxx.xxx/xx);
     
-  - Determina a classe IP (A, B, C, D, E);
+  - Determina a classe IP (A, B, C);
   
   - Converte CIDR em máscara de sub-rede decimal;
     
