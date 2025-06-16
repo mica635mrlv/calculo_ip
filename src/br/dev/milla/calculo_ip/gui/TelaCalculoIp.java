@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.plaf.FontUIResource;
@@ -114,10 +116,8 @@ public class TelaCalculoIp {
 	                    lblResulSalto.setText(String.valueOf(calculadora.calcSalto()));
 	                    lblResulPrimIpValido.setText(String.valueOf(calculadora.primIpValido()));
 	                    lblResulUltimIpValido.setText(String.valueOf(calculadora.ultimIpValido()));
-	                    lblResulIpBroadcast.setText(String.valueOf(calculadora.ipBroadcast()));	                    
-
-	                    lblMensagemErro.setText("");
-	                    
+	                    lblResulIpBroadcast.setText(String.valueOf(calculadora.ipBroadcast()));	
+              
 	                } catch (NumberFormatException ex) {
 	                	
 	                    lblMensagemErro.setText("<html>Para que a calculadora funcione corretamente <br> digite apenas números válidos!<html>");
@@ -178,8 +178,8 @@ public class TelaCalculoIp {
 			lblClasse.setText("Classe:");
 			lblMascaraDec.setText("Másc. Decimal:");
 			lblMascaraBin.setText("Másc. Binária:");
-			lblEndIpDisp.setText("IPs Disponíveis:");
-			lblNumRedes.setText("Núm. de Redes:");
+			lblEndIpDisp.setText("IP Disponível:");
+			lblNumRedes.setText("Núm. de Rede:");
 			lblSalto.setText("Salto:");
 			lblPrimIpValido.setText("Prim. IP Válido:");
 			lblUltimIpValido.setText("Ult. IP Válido:");
@@ -208,7 +208,7 @@ public class TelaCalculoIp {
 			
 			// Painel Resultado
 			pnlResultado = new JPanel(new GridLayout(9, 1, 0, 0));
-			pnlResultado.setBounds(160, 160, 287, 207);
+			pnlResultado.setBounds(150, 160, 297, 207);
 			
 			lblResulIp = new JLabel();
 			lblResulClasse = new JLabel();
